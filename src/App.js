@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Home from "./components/Content/Home";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Nav/Header";
 
 function App() {
+  const loginStatus = localStorage.getItem("loginStatus");
+
+  if (!loginStatus) {
+    localStorage.setItem("loginStatus", false);
+    localStorage.setItem("balance", 100);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header Status={loginStatus} />
+      <Home />
+      <Footer />
     </div>
   );
 }
